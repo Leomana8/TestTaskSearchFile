@@ -1,0 +1,9 @@
+D:\Docyment\prog\TestTaskSearchFile\TestTask\bin\Debug\TestTask.exe.config
+D:\Docyment\prog\TestTaskSearchFile\TestTask\bin\Debug\TestTask.exe
+D:\Docyment\prog\TestTaskSearchFile\TestTask\bin\Debug\TestTask.pdb
+D:\Docyment\prog\TestTaskSearchFile\TestTask\obj\Debug\TestTask.csprojResolveAssemblyReference.cache
+D:\Docyment\prog\TestTaskSearchFile\TestTask\obj\Debug\TestTask.Form1.resources
+D:\Docyment\prog\TestTaskSearchFile\TestTask\obj\Debug\TestTask.Properties.Resources.resources
+D:\Docyment\prog\TestTaskSearchFile\TestTask\obj\Debug\TestTask.csproj.GenerateResource.Cache
+D:\Docyment\prog\TestTaskSearchFile\TestTask\obj\Debug\TestTask.exe
+D:\Docyment\prog\TestTaskSearchFile\TestTask\obj\Debug\TestTask.pdb
