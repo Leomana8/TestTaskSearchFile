@@ -9,8 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Forms = System.Windows.Forms;
 using System.Windows.Forms;
-using System.Xml;
 
 namespace TestTask
 {
@@ -18,15 +18,19 @@ namespace TestTask
     {
         Term criteria;
         string saveFile = "term.xml";
-        XmlDocument xDoc;
         CancellationTokenSource cts;
         Stopwatch timer;
+        Forms.Timer timeTick;
         SearchFiles searchingFile;
 
         public Form1()
         {
             InitializeComponent();           
             timer = new Stopwatch();
+            timeTick = new Forms.Timer();
+            timeTick.Tick += new System.EventHandler(this.timer_Tick);
+            timeTick.Start();
+
             criteria = new Term();
             criteria.LoadTermFile(saveFile);
             tbFolder.Text = criteria.StartFolder;
@@ -98,8 +102,12 @@ namespace TestTask
         {
             if(file != null)
                 label_nameFile.Text = file.Name;
-            label_count.Text = searchingFile.CountFiles.ToString();
-            label_time.Text = timer.Elapsed.ToString(@"hh\:mm\:ss");       
+            label_count.Text = searchingFile.CountFiles.ToString();                 
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            label_time.Text = timer.Elapsed.ToString(@"hh\:mm\:ss"); 
         }
 
         private void Form1_Closing(object sender, System.ComponentModel.CancelEventArgs e)

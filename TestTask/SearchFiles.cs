@@ -69,19 +69,35 @@ namespace TestTask
             {
                 // запрет в доступе
             }
-            foreach (var file in files)
-            {
-                _countFiles++;
-                yield return file;
-            }
-            if (files.Length == 0)
+            // если файлов нет, возращается null для асинхронности
+            if (files == null || files.Length == 0)
                 yield return null;
-            // поиск в подкаталогах
-            foreach (var dir in path.GetDirectories())
+            else
             {
-                foreach (var file in NextFile(dir, pattern))
+                foreach (var file in files)
                 {
-                   yield return file;
+                    _countFiles++;
+                    yield return file;
+                }
+            }
+            // поиск в подкаталогах
+            DirectoryInfo[] dirs = null;
+            try
+            {
+                dirs = path.GetDirectories();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                // запрет в доступе
+            }
+            if (dirs != null)
+            {
+                foreach (var dir in dirs)
+                {
+                    foreach (var file in NextFile(dir, pattern))
+                    {
+                        yield return file;
+                    }
                 }
             }
         }
@@ -100,6 +116,9 @@ namespace TestTask
                      ).Any();
                     }
                     catch (IOException)
+                    {
+                    }
+                    catch (UnauthorizedAccessException)
                     {
                     }
                 });
